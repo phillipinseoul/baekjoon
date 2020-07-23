@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+	int n, f, m, mod, div, plus;
+	scanf("%d%d", &n, &f);
+	m = (n / 100) * 100;
+	div = m / f;
+	mod = m % f;
+	if (mod == 0) {
+		printf("%02d", m % 100);
+	}
+	else {
+		printf("%02d\n", (m + f - mod) % 100);
+	}
+}
