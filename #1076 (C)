@@ -2,85 +2,23 @@
 #include <string.h>   // strcmp
 #include <math.h>     // pow
 
+// index = number
+char color[10][10] = { "black","brown","red","orange","yellow",
+	"green","blue","violet","grey","white" };
+
+// implement a function to get the number from input colors
+int getIndex(char c[]) {
+	for (int i = 0; i < 10; i++) {
+		if (0 == strcmp(color[i], c)) return i;
+	}
+}
+
 int main() {
-	long long result = 0;
-  int i = 0;
-	char color[10];
-
-  // take first two inputs
-	for (i = 0; i < 2; i++) {
-		scanf("%s", color);
-
-		if (0 == strcmp(color, "black")) {
-			result += 0;
-		}
-		else if (0 == strcmp(color, "brown")) {
-			result += 1;
-		}
-		else if (0 == strcmp(color, "red")) {
-			result += 2;
-		}
-		else if (0 == strcmp(color, "orange")) {
-			result += 3;
-		}
-		else if (0 == strcmp(color, "yellow")) {
-			result += 4;
-		}
-		else if (0 == strcmp(color, "green")) {
-			result += 5;
-		}
-		else if (0 == strcmp(color, "blue")) {
-			result += 6;
-		}
-		else if (0 == strcmp(color, "violet")) {
-			result += 7;
-		}
-		else if (0 == strcmp(color, "grey")) {
-			result += 8;
-		}
-		else {
-			result += 9;
-		}
-
-		if (i == 0)
-			result *= 10;
-	}
+	long long result;
+	char c1[10], c2[10], c3[10];
+	scanf("%s\n%s\n%s", c1, c2, c3);		// take all inputs AT ONCE!
+	result = 10 * getIndex(c1) + getIndex(c2);
+	result *= pow(10, getIndex(c3));
   
-  // take third input (multiply to the result)
-	scanf("%s", color);
-
-	if (0 == strcmp(color, "black")) {
-		result *= pow(10, 0);
-	}
-	else if (0 == strcmp(color, "brown")) {
-		result *= pow(10, 1);
-	}
-	else if (0 == strcmp(color, "red")) {
-		result *= pow(10, 2);
-	}
-	else if (0 == strcmp(color, "orange")) {
-		result *= pow(10, 3);
-	}
-	else if (0 == strcmp(color, "yellow")) {
-		result *= pow(10, 4);
-	}
-	else if (0 == strcmp(color, "green")) {
-		result *= pow(10, 5);
-	}
-	else if (0 == strcmp(color, "blue")) {
-		result *= pow(10, 6);
-	}
-	else if (0 == strcmp(color, "violet")) {
-		result *= pow(10, 7);
-	}
-	else if (0 == strcmp(color, "grey")) {
-		result *= pow(10, 8);
-	}
-	else {
-		result *= pow(10, 9);
-	}
-
-
 	printf("%lld\n", result);
-
 }
