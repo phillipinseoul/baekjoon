@@ -3,6 +3,7 @@
 #include <string.h>   // strcmp
 // get rid of <math.h> => pow 한번밖에 사용안함! for-loop으로 대체 가능함
 
+int i;
 // index = number
 char color[10][10] = { "black","brown","red","orange","yellow",
 	"green","blue","violet","grey","white" };
@@ -19,8 +20,7 @@ int main() {
 	char c1[10], c2[10], c3[10];
 	scanf("%s\n%s\n%s", c1, c2, c3);		// take all inputs AT ONCE!
 	result = 10 * getIndex(c1) + getIndex(c2);
-	for (int j = 0; j < getIndex(c3); j++) {
-		result *= 10;
-	}
+	int j = getIndex(c3);				// use variable j to prevent getIndex() from executing every time
+	for (i = 0; i < j; i++) result *= 10;
 	printf("%lld\n", result);
 }
