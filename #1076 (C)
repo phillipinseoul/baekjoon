@@ -3,24 +3,23 @@
 #include <string.h>   // strcmp
 // get rid of <math.h> => pow 한번밖에 사용안함! for-loop으로 대체 가능함
 
-int i;
-// index = number
-char color[10][10] = { "black","brown","red","orange","yellow",
-	"green","blue","violet","grey","white" };
-
-// implement a function to get the number from input colors
-int getIndex(char c[]) {
-	for (int i = 0; i < 10; i++) {
-		if (0 == strcmp(color[i], c)) return i;
-	}
-}
+// instead of using functions, use for-loop 3 times in the main()
 
 int main() {
-	long long result;
+	int i;
+	long long result, mul = 1;
 	char c1[10], c2[10], c3[10];
 	scanf("%s\n%s\n%s", c1, c2, c3);		// take all inputs AT ONCE!
-	result = 10 * getIndex(c1) + getIndex(c2);
-	int j = getIndex(c3);				// use variable j to prevent getIndex() from executing every time
-	for (i = 0; i < j; i++) result *= 10;
+	
+	for (i = 0; i < 10; i++) {
+		if (strcmp(c1, color[i]) == 0) result = 10 * i;
+	}
+	for (i = 0; i < 10; i++) {
+		if (strcmp(c2, color[i]) == 0) result += i;
+	}
+	for (i = 0; i < 10; i++) {
+		if (strcmp(c3, color[i]) == 0) result *= mul;
+		mul *= 10;
+	}
 	printf("%lld\n", result);
 }
