@@ -1,0 +1,22 @@
+#include<stdio.h>
+
+int input[10], i, sum = 0;
+
+int main() {
+  // make a list of 10 numbers
+	for (i = 0; i < 10; i++) {
+		scanf("%d", &input[i]);
+	}
+  
+  // when does sum > 100?
+  // x < 100 < y -> compare x & y
+	for (i = 0; i < 10; i++) {
+		sum += input[i];
+		if (sum > 100) {
+			if (sum - 100 > 100 - (sum - input[i])) sum -= input[i];
+			printf("%d\n", sum);
+			return 0;
+		}
+	}
+	printf("%d\n", sum);
+}
