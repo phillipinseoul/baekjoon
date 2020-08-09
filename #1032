@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int num;		// number of strings
-char result[51], input[51];	// result = first string, input = 비교 대상
+char result[51], input[51], c;	// result = first string, input = 비교 대상
 
 int main() {
 	scanf("%d%s", &num, result);
@@ -9,18 +9,8 @@ int main() {
 	// for-loop -> if NOT same, change to '?'
 	for (int i = 0; i < num - 1; i++) {
 		scanf("%s", input);
-		for (int j = 0; result[j] != '\0'; j++) {
-			if (result[j]=='?') {
-				continue;
-			}
-			else {
-				if (result[j] == input[j]) {
-					continue;
-				}
-				else {
-					result[j] = '?';
-				}
-			}
+		for (int j = 0; (c = result[j]) != '\0'; j++) {
+			if (c != '?' && c != input[j]) result[j] = '?';
 		}
 	}
 	printf("%s\n", result);
