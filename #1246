@@ -1,30 +1,33 @@
-#include<iostream>
-#include<algorithm>
+#include<stdio.h>
+#include<stdlib.h>
+
+// helper function for decreasing sort
+int compare(const void* x, const void* y){
+	return *(int*)y - *(int*)x;
+}
 
 int main() {
-  int egg, ppl, i, price, temp, sum = 0;
+	int egg, ppl, i, price, temp, smaller, sum = 0;
   
-  // take inputs and create dynamic array
-	std::cin >> egg;
-	std::cin >> ppl;
-	int* pi = new int[ppl];
+	// take inputs and create dynamic array
+	scanf("%d%d", &egg, &ppl);
+	int pi[1000];
 
 	for (i = 0; i < ppl; i++) {	
-		std::cin >> pi[i];
+		scanf("%d", &pi[i]);
 	}
   
-  // sort the array (increasing)
-	std::sort(pi, pi+ppl);
-  
-  // calculate maximum sum
-	for (i = 0; i < ppl; i++) {
-		if (ppl - i > egg) temp = egg * pi[i];
-		else temp = (ppl - i) * pi[i];
-        
-		if (sum < temp) {
-			sum = temp;
+	// sort the array (increasing)
+	// qsort in <stdlib.h>
+	qsort(pi, ppl, sizeof(int), compare);
+  	
+	// calculate maximum sum -> min (ppl, egg) -> for-loop 어디서 끝나는지 결정!!
+	smaller = (ppl < egg) ? ppl : egg;
+	for (i = 0; i < smaller; i++) {
+		if (sum < (i+1) * pi[i]){
+			sum = (i+1) * pi[i];
 			price = pi[i];
 		}
 	}
-	std::cout << price << " " << sum << std::endl;
+	printf("%d %d\n", price, sum);
 }
