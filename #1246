@@ -1,0 +1,30 @@
+#include<iostream>
+#include<algorithm>
+
+int main() {
+  int egg, ppl, i, price, temp, sum = 0;
+  
+  // take inputs and create dynamic array
+	std::cin >> egg;
+	std::cin >> ppl;
+	int* pi = new int[ppl];
+
+	for (i = 0; i < ppl; i++) {	
+		std::cin >> pi[i];
+	}
+  
+  // sort the array (increasing)
+	std::sort(pi, pi+ppl);
+  
+  // calculate maximum sum
+	for (i = 0; i < ppl; i++) {
+		if (ppl - i > egg) temp = egg * pi[i];
+		else temp = (ppl - i) * pi[i];
+        
+		if (sum < temp) {
+			sum = temp;
+			price = pi[i];
+		}
+	}
+	std::cout << price << " " << sum << std::endl;
+}
