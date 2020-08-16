@@ -2,7 +2,6 @@
 // <iostream>을 <cstdio>로 대체함
 // map 사용할 필요 없다!
 
-using namespace std;
 char board[500];
 
 // 백준 1343번
