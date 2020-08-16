@@ -1,4 +1,5 @@
-#include<iostream>
+#include<cstdio>
+// <iostream>을 <cstdio>로 대체함
 // map 사용할 필요 없다!
 
 using namespace std;
@@ -36,5 +37,5 @@ int main() {
 	return 0;
 }
 
-// 메모리 = 1988KB -> 아직 메모리 많이 사용
+// 메모리 = 1112KB -> 메모리 사용량 감소함
 // #include<iostream> 사용하기 때문! -> #include<cstdio>로 대체하면 메모리 사용량 감소함
